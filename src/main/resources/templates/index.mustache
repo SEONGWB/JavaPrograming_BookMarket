@@ -1,0 +1,29 @@
+{{>layout/header}}
+<h1>북마켓</h1>
+<div class="col-md-6">
+    <a href="/book/save" role="button" class="btn btn-primary">도서 등록</a>
+</div>
+<!-- 도서 목록 출력영역-->
+<div>
+<table class="table table-horizontal table-bordered">
+    <thead class="thead-strong">
+    <tr>
+        <th>ID</th>
+        <th>ISBN</th> <th>도서명</th>
+        <th>작성자</th> <th>출판사</th>
+        <th>판매가</th> <th>최종수정일</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#book}}
+        <tr>
+            <td>{{id}}</td><td>{{isbn}}</td>
+            <td><a href="/book/update/{{id}}">{{title}}</a></td>
+            <td>{{author}}</td><td>{{publisher}}</td>
+            <td>{{price}}</td><td>{{modifiedDate}}</td>
+        </tr>
+    {{/book}}
+    </tbody>
+</table>
+</div>
+{{>layout/footer}}
