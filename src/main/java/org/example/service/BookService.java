@@ -32,7 +32,10 @@ public class BookService {
                 ,requestDto.getTitle()
                 ,requestDto.getAuthor()
                 ,requestDto.getPublisher()
-                ,requestDto.getPrice());
+                ,requestDto.getPrice()
+                ,requestDto.getDescription()
+                ,requestDto.getCategory()
+                ,requestDto.getReleaseDate());
         return id;
     }
 

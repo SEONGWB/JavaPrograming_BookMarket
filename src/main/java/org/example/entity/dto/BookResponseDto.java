@@ -13,6 +13,9 @@ public class BookResponseDto {
     private String author;
     private String publisher;
     private int price;
+    private String description;
+    private String category;
+    private String releaseDate;
 
     public BookResponseDto(Book entity) {
         this.id = entity.getId();
@@ -21,5 +24,8 @@ public class BookResponseDto {
         this.author = entity.getAuthor();
         this.publisher = entity.getPublisher();
         this.price = entity.getPrice();
+        this.description = entity.getDescription();
+        this.category = entity.getCategory();
+        this.releaseDate = entity.getReleaseDate();
     }
 }
