@@ -23,21 +23,30 @@ public class Book extends BaseTimeEntity {
     @Column(length = 100, nullable = false) private String author;
     @Column(length = 100, nullable = false) private String publisher;
                                             private int price;
-
+    @Column(columnDefinition = "TEXT")
+    private String description;
+    private String category;
+    private String releaseDate;
     @Builder
-    public Book(String isbn, String title, String author, String publisher, int price) {
+    public Book(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
         this.isbn       = isbn;
         this.title      = title;
         this.author     = author;
         this.publisher  = publisher;
         this.price      = price;
+        this.description = description;
+        this.category = category;
+        this.releaseDate = releaseDate;
     }
 
-    public void update(String isbn, String title, String author, String publisher, int price) {
+    public void update(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
         this.isbn       = isbn;
         this.title      = title;
         this.author     = author;
         this.publisher  = publisher;
         this.price      = price;
+        this.description = description;
+        this.category = category;
+        this.releaseDate = releaseDate;
     }
 }
