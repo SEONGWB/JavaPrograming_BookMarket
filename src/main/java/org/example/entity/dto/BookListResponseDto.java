@@ -14,6 +14,10 @@ public class BookListResponseDto {
     private String author;
     private String publisher;
     private int price;
+
+    private String category;
+    private String releaseDate;
+
     private LocalDateTime modifiedDate;
 
     public BookListResponseDto(Book entity) {
@@ -23,6 +27,10 @@ public class BookListResponseDto {
         this.author = entity.getAuthor();
         this.publisher = entity.getPublisher();
         this.price = entity.getPrice();
+
+        this.category = entity.getCategory();
+        this.releaseDate = entity.getReleaseDate();
+
         this.modifiedDate = entity.getModifiedDate();
     }
 

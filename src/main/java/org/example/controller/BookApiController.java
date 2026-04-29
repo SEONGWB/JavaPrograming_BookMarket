@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.example.service.BookService;
 import org.example.entity.dto.BookResponseDto;
 import org.example.entity.dto.BookSaveRequestDto;
+import org.example.entity.dto.BookListResponseDto;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -28,4 +31,9 @@ public class BookApiController {
     public BookResponseDto findById(@PathVariable Long id) {
         return bookService.findById(id);
     }
+
+    @GetMapping("/api/v1/books")
+    public List<BookListResponseDto> findAll() { return bookService.findAllDesc();}
+
 }
+
