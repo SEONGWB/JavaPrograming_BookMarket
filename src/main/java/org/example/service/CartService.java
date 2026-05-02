@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -42,12 +43,24 @@ public class CartService {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("회원이 없습니다."));
         Cart cart = cartRepository.findByUser(user).orElseThrow(() -> new IllegalArgumentException("장바구니가 없습니다."));
         Book book = bookRepository.findById(requestDto.getBookId()).orElseThrow(() -> new IllegalArgumentException("책이 없습니다."));
-        CartItem item = CartItem.builder()
-                .cart(cart)
-                .book(book)
-                .quantity(requestDto.getQuantity())
-                .build();
-        return cartItemRepository.save(item).getId();
+
+        //해당 장바구니에 이미 이 책이 담겨 있는지 확인
+        Optional<CartItem> itemOptional = cartItemRepository.findByCartIdAndBookId(cart.getId(), book.getId());
+
+        if (itemOptional.isPresent()) {
+            //이미 있다면: 기존 수량에 더하기 (Dirty Checking으로 자동 반영)
+            CartItem existingItem = itemOptional.get();
+            existingItem.setQuantity(existingItem.getQuantity() + requestDto.getQuantity());
+            return existingItem.getId();
+        } else {
+            // 4-2. 없다면: 새롭게 생성하여 저장
+            CartItem newItem = CartItem.builder()
+                    .cart(cart)
+                    .book(book)
+                    .quantity(requestDto.getQuantity())
+                    .build();
+            return cartItemRepository.save(newItem).getId();
+        }
     }
 
     @Transactional(readOnly = true)
