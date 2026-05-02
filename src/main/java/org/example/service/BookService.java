@@ -2,14 +2,14 @@ package org.example.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.entity.Book;
-import org.example.entity.dto.BookListResponseDto;
-import org.example.entity.dto.BookUpdateRequestDto;
+import org.example.dto.book.BookListResponseDto;
+import org.example.dto.book.BookUpdateRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.example.repository.BookRepository;
-import org.example.entity.dto.BookResponseDto;
-import org.example.entity.dto.BookSaveRequestDto;
+import org.example.dto.book.BookResponseDto;
+import org.example.dto.book.BookSaveRequestDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

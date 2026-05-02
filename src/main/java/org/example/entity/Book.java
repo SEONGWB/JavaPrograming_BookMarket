@@ -1,9 +1,6 @@
 package org.example.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -27,6 +25,7 @@ public class Book extends BaseTimeEntity {
     private String description;
     private String category;
     private String releaseDate;
+
     @Builder
     public Book(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
         this.isbn       = isbn;

@@ -1,19 +1,18 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.dto.BookUpdateRequestDto;
-import org.springframework.web.bind.annotation.*;
-
+import org.example.dto.book.BookListResponseDto;
+import org.example.dto.book.BookResponseDto;
+import org.example.dto.book.BookSaveRequestDto;
+import org.example.dto.book.BookUpdateRequestDto;
 import org.example.service.BookService;
-import org.example.entity.dto.BookResponseDto;
-import org.example.entity.dto.BookSaveRequestDto;
-import org.example.entity.dto.BookListResponseDto;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-public class BookApiController {
+public class BookController {
 
     private final BookService bookService;
 
@@ -23,7 +22,9 @@ public class BookApiController {
     }
 
     @PutMapping("/api/v1/book/{id}")
-    public Long update(@PathVariable Long id, @RequestBody BookUpdateRequestDto requestDto) {
+    public Long update(@PathVariable Long id,
+                       @RequestBody BookUpdateRequestDto requestDto) {
+
         return bookService.update(id, requestDto);
     }
 
@@ -33,7 +34,7 @@ public class BookApiController {
     }
 
     @GetMapping("/api/v1/books")
-    public List<BookListResponseDto> findAll() { return bookService.findAllDesc();}
-
+    public List<BookListResponseDto> findAll() {
+        return bookService.findAllDesc();
+    }
 }
-
