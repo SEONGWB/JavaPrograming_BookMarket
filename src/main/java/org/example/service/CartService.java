@@ -53,7 +53,7 @@ public class CartService {
             existingItem.setQuantity(existingItem.getQuantity() + requestDto.getQuantity());
             return existingItem.getId();
         } else {
-            // 4-2. 없다면: 새롭게 생성하여 저장
+            //없다면: 새롭게 생성하여 저장
             CartItem newItem = CartItem.builder()
                     .cart(cart)
                     .book(book)
