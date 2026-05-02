@@ -67,4 +67,15 @@ public class CartService {
     public void deleteItem(Long cartItemId) {
         cartItemRepository.deleteById(cartItemId);
     }
+
+    @Transactional
+    public void clearCart(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("회원이 없습니다."));
+        Cart cart = cartRepository.findByUser(user)
+                .orElseThrow(() -> new IllegalArgumentException("장바구니가 없습니다."));
+
+        List<CartItem> items = cartItemRepository.findByCart(cart);
+        cartItemRepository.deleteAll(items); // 여기서 에러가 났다면 필드 선언을 확인하세요!
+    }
 }

@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "cart_tb")
 public class Cart extends BaseTimeEntity {
 
     @Id
