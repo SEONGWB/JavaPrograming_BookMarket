@@ -2,9 +2,11 @@ package org.example.dto.book;
 
 import lombok.Getter;
 
+import lombok.NoArgsConstructor;
 import org.example.entity.Book;
 
 @Getter
+@NoArgsConstructor
 public class BookResponseDto {
 
     private Long id;

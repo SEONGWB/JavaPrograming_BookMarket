@@ -3,9 +3,11 @@ package org.example.dto.book;
 import lombok.Getter;
 import java.time.LocalDateTime;
 
+import lombok.NoArgsConstructor;
 import org.example.entity.Book;
 
 @Getter
+@NoArgsConstructor
 public class BookListResponseDto {
 
     private Long id;

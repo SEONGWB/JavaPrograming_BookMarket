@@ -1,11 +1,14 @@
 package org.example.dto.book;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class BookUpdateRequestDto {
 
     private String isbn;
@@ -16,16 +19,4 @@ public class BookUpdateRequestDto {
     private String description;
     private String category;
     private String releaseDate;
-
-    @Builder
-    public BookUpdateRequestDto(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
-        this.isbn           = isbn;
-        this.title          = title;
-        this.author         = author;
-        this.publisher      = publisher;
-        this.price          = price;
-        this.description    = description;
-        this.category       = category;
-        this.releaseDate    = releaseDate;
-    }
 }
