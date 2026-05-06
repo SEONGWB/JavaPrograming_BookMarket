@@ -25,7 +25,7 @@ public class Order extends BaseTimeEntity {
     private User user;
 
     @Column(nullable = false)
-    private String status; // 주문 상태 (예: ORDERED, CANCEL)
+    private String status;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();

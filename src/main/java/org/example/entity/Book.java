@@ -18,7 +18,7 @@ public class Book extends BaseTimeEntity {
     @Column(name = "book_id")
     private Long id;
 
-    @Column(length = 13, nullable = false) // ISBN 추가 (보통 13자리)
+    @Column(length = 13, nullable = false)
     private String isbn;
 
     @Column(length = 200, nullable = false)
