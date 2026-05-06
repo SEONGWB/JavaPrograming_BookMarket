@@ -1,26 +1,32 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "user_tb")
-@Getter @Setter
-@NoArgsConstructor
-public class User {
+public class User extends BaseTimeEntity {
 
-    @Id //
-    @Column(name = "user_id", length = 50)
-    private String userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true, length = 50)   
+    private String loginId;
+  
+    @Column(nullable = true)   
     private String password;
-
-    @Column(nullable = false, length = 50)
+  
+    @Column(nullable = false, length = 30)                  
     private String name;
-
-    @Column(unique = true, length = 100)
-    private String email;
+  
+    @Enumerated(EnumType.STRING)                            
+    private Role role;
+  
+    @Column(nullable = false)                               
+    private String provider;
 }

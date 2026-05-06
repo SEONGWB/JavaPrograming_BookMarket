@@ -1,0 +1,20 @@
+package org.example.dto.user;
+
+import lombok.Getter;
+import org.example.entity.User;
+
+@Getter
+public class UserResponseDto {
+
+    private Long   id;
+    private String loginId;
+    private String name;
+    private String provider;
+
+    public UserResponseDto(User user) {
+        this.id       = user.getId();
+        this.loginId  = user.getLoginId();
+        this.name     = user.getName();
+        this.provider = user.getProvider();
+    }
+}

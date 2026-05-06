@@ -1,16 +1,14 @@
 package org.example.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "order_item_tb")
+@Table(name = "order_item_tb") // 과제 요구사항 준수
 public class OrderItem extends BaseTimeEntity {
 
     @Id
