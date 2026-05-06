@@ -13,16 +13,25 @@ public class OrderItem extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Orders order; // 어떤 주문서에 포함되어 있는지
+    private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
-    private Book book; // 어떤 책인지
+    private Book book;
 
-    private int orderPrice; // 주문 당시의 가격 (할인 등이 반영될 수 있음)
-    private int count; // 주문 수량
+    private int orderPrice;
+    private int count;
+
+    @Builder
+    public OrderItem(Order order, Book book, int orderPrice, int count) {
+        this.order = order;
+        this.book = book;
+        this.orderPrice = orderPrice;
+        this.count = count;
+    }
 }
