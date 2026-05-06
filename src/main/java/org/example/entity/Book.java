@@ -41,7 +41,6 @@ public class Book extends BaseTimeEntity {
         this.price = price;
     }
 
-    // 이제 DTO의 모든 필드와 1:1로 매칭됩니다!
     public void update(String isbn, String title, String author, String publisher, int price) {
         this.isbn = isbn;
         this.title = title;

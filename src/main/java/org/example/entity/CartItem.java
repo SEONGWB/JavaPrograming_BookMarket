@@ -18,12 +18,10 @@ public class CartItem extends BaseTimeEntity {
     @Column(name = "cart_item_id")
     private Long id;
 
-    // 어떤 장바구니에 담긴 상품인지 연결
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    // 어떤 책이 담긴 것인지 연결
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
@@ -38,7 +36,6 @@ public class CartItem extends BaseTimeEntity {
         this.quantity = quantity;
     }
 
-    // 장바구니 안에서 상품 수량을 변경할 때 사용하는 메서드
     public void updateQuantity(int quantity) {
         this.quantity = quantity;
     }

@@ -18,18 +18,16 @@ public class OrderItem extends BaseTimeEntity {
     @Column(name = "order_item_id")
     private Long id;
 
-    // 어떤 주문에 속한 항목인지 연결 (N:1)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
-    // 어떤 책을 주문한 것인지 연결 (N:1)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
 
-    private int orderPrice; // 주문 당시의 가격 (할인 등이 있을 수 있으므로 따로 기록)
-    private int count;      // 주문 수량
+    private int orderPrice;
+    private int count;
 
     @Builder
     public OrderItem(Order order, Book book, int orderPrice, int count) {
