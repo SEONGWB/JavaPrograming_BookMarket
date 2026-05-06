@@ -67,3 +67,5 @@ CREATE TABLE order_item_tb (
     FOREIGN KEY (order_id) REFERENCES order_tb(order_id),
     FOREIGN KEY (book_id) REFERENCES book_tb(book_id)
 );
+
+INSERT INTO book_tb (isbn, title, author, price) VALUES ('12345', '자바의 정석', '남궁성', 30000);
