@@ -25,24 +25,24 @@ public class Book extends BaseTimeEntity {
 
     @Builder
     public Book(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
-        this.isbn       = isbn;
-        this.title      = title;
-        this.author     = author;
-        this.publisher  = publisher;
-        this.price      = price;
+        this.isbn        = isbn;
+        this.title       = title;
+        this.author      = author;
+        this.publisher   = publisher;
+        this.price       = price;
         this.description = description;
-        this.category = category;
+        this.category    = category;
         this.releaseDate = releaseDate;
     }
 
     public void update(String isbn, String title, String author, String publisher, int price, String description, String category, String releaseDate) {
-        this.isbn       = isbn;
-        this.title      = title;
-        this.author     = author;
-        this.publisher  = publisher;
-        this.price      = price;
+        this.isbn        = isbn;
+        this.title       = title;
+        this.author      = author;
+        this.publisher   = publisher;
+        this.price       = price;
         this.description = description;
-        this.category = category;
+        this.category    = category;
         this.releaseDate = releaseDate;
     }
 }
