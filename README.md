@@ -3,7 +3,6 @@ CREATE DATABASE IF NOT EXISTS bookmarket_db;
 USE bookmarket_db;
 
 -- 2. 사용자 테이블 (user_tb)
--- 민경 님의 설계대로 userId를 기본키(PK)로 사용합니다.
 CREATE TABLE user_tb (
     user_id VARCHAR(50) PRIMARY KEY,      -- 사용자 ID (String)
     password VARCHAR(100) NOT NULL,       -- 비밀번호
@@ -14,7 +13,6 @@ CREATE TABLE user_tb (
 );
 
 -- 3. 도서 테이블 (book_tb)
--- 최신 반영된 isbn과 publisher 컬럼을 포함합니다.
 CREATE TABLE book_tb (
     book_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     isbn VARCHAR(13) NOT NULL,            -- 도서고유번호
