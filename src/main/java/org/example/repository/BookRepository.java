@@ -10,5 +10,8 @@ public interface BookRepository extends JpaRepository<Book, Long>{
 
     @Query("SELECT p FROM Book p ORDER BY p.id DESC")
     List<Book> findAllDesc();
-}
 
+    List<Book> findByTitleContaining(String keyword);
+
+    List<Book> findByAuthorContaining(String keyword);
+}
