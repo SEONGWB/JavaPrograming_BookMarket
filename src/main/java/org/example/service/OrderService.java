@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class OrderService {
 
-    private final OrdersRepository ordersRepository;
+    private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository; // 추가
     private final CartService cartService;
     private final UserRepository userRepository;
@@ -28,12 +28,12 @@ public class OrderService {
                 .orElseThrow(() -> new IllegalArgumentException("사용자가 없습니다. id=" + userId));
 
         // 2. 주문 엔티티 생성 (order_tb)
-        Orders order = Orders.builder()
+        Order order = Order.builder()
                 .user(user)
-                .orderStatus("ORDER")
+                .status("ORDER")
                 .build();
 
-        ordersRepository.save(order); // ID 생성을 위해 먼저 저장
+        orderRepository.save(order); // ID 생성을 위해 먼저 저장
 
         // 3. 장바구니 아이템들을 주문 아이템(order_item_tb)으로 변환
         List<CartItemResponseDto> cartItems = cartService.findCartItems(userId);
