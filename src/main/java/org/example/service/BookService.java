@@ -28,14 +28,13 @@ public class BookService {
 
     public Long update(Long id, BookUpdateRequestDto requestDto) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 도서가 없습니다. id=" + id));
-        book.update(requestDto.getIsbn()
-                ,requestDto.getTitle()
-                ,requestDto.getAuthor()
-                ,requestDto.getPublisher()
-                ,requestDto.getPrice()
-                ,requestDto.getDescription()
-                ,requestDto.getCategory()
-                ,requestDto.getReleaseDate());
+        book.update(
+                requestDto.getIsbn(),
+                requestDto.getTitle(),
+                requestDto.getAuthor(),
+                requestDto.getPublisher(),
+                requestDto.getPrice()
+        );
         return id;
     }
 

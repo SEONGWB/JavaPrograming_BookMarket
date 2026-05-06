@@ -1,7 +1,7 @@
 package org.example.entity;
 
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
@@ -10,14 +10,26 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "book_tb")
 public class Book extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private Long id;
-    @Column(length = 13, nullable = false)  private String isbn;
-    @Column(length = 250, nullable = false) private String title;
-    @Column(length = 100, nullable = false) private String author;
-    @Column(length = 100, nullable = false) private String publisher;
-                                            private int price;
+
+    @Column(length = 13, nullable = false)
+    private String isbn;
+
+    @Column(length = 200, nullable = false)
+    private String title;
+
+    @Column(length = 100)
+    private String author;
+
+    @Column(length = 100)
+    private String publisher;
+
+    private int price;
+
     @Column(columnDefinition = "TEXT")
     private String description;
     private String category;
