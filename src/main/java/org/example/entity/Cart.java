@@ -14,6 +14,15 @@ public class Cart extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_id")
     private Long id;
-    @OneToOne @JoinColumn(name = "user_id") private User user;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Builder
+    public Cart(User user) {
+        this.user = user;
+    }
 }
