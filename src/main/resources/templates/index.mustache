@@ -1,29 +1,160 @@
-{{>layout/header}}
-<h1>북마켓</h1>
-<div class="col-md-6">
-    <a href="/book/save" role="button" class="btn btn-primary">도서 등록</a>
-</div>
-<!-- 도서 목록 출력영역-->
-<div>
-<table class="table table-horizontal table-bordered">
-    <thead class="thead-strong">
-    <tr>
-        <th>ID</th>
-        <th>ISBN</th> <th>도서명</th>
-        <th>작성자</th> <th>출판사</th>
-        <th>판매가</th> <th>최종수정일</th>
-    </tr>
-    </thead>
-    <tbody id="tbody">
-    {{#book}}
-        <tr>
-            <td>{{id}}</td><td>{{isbn}}</td>
-            <td><a href="/book/update/{{id}}">{{title}}</a></td>
-            <td>{{author}}</td><td>{{publisher}}</td>
-            <td>{{price}}</td><td>{{modifiedDate}}</td>
-        </tr>
-    {{/book}}
-    </tbody>
-</table>
-</div>
-{{>layout/footer}}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>북마켓</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS (CDN 적용) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons (CDN 적용) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-white font-sans text-slate-800">
+
+    <!-- Header -->
+    <header class="border-b border-gray-100 bg-white sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-extrabold tracking-tight text-slate-900">
+                북마켓
+            </a>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="/api/v1/books" class="flex items-center gap-2 hover:text-slate-900 transition-colors">
+                    <i data-lucide="book" class="w-[18px] h-[18px]"></i>
+                    도서 목록
+                </a>
+                <a href="/api/v1/cart/1" class="flex items-center gap-2 hover:text-slate-900 transition-colors">
+                    <i data-lucide="shopping-cart" class="w-[18px] h-[18px]"></i>
+                    장바구니
+                </a>
+                <a href="/api/v1/order/1" class="flex items-center gap-2 hover:text-slate-900 transition-colors">
+                    <i data-lucide="clipboard-list" class="w-[18px] h-[18px]"></i>
+                    주문 내역
+                </a>
+                <a href="/api/v1/login" class="flex items-center gap-2 hover:text-slate-900 transition-colors ml-4">
+                    <i data-lucide="user" class="w-[18px] h-[18px]"></i>
+                    로그인
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-[#FAF8F5] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <!-- Hero Content (Left) -->
+            <div class="w-full md:w-1/2 flex flex-col items-start z-10">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-[#0B1E40] leading-tight tracking-tight mb-6">
+                    읽고 싶은 책을<br />한 곳에서
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                    도서 등록부터 장바구니, 주문까지<br class="hidden md:block" />
+                    간단하게 관리하는 북마켓
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="/api/v1/books" class="bg-[#0B1E40] hover:bg-[#152e5c] text-white px-8 py-4 rounded-lg flex items-center justify-center gap-3 font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                        <i data-lucide="book-open" class="w-[22px] h-[22px]"></i>
+                        도서 둘러보기
+                    </a>
+                    <a href="/book/save" class="bg-white hover:bg-slate-50 text-[#0B1E40] border border-[#0B1E40] px-8 py-4 rounded-lg flex items-center justify-center gap-3 font-semibold text-lg transition-all shadow-sm">
+                        <i data-lucide="edit" class="w-[22px] h-[22px]"></i>
+                        도서 등록
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image (Right) -->
+            <div class="w-full md:w-1/2 relative flex justify-center items-center mt-10 md:mt-0">
+                <div class="relative w-full max-w-lg aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <img 
+                        src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        alt="책 이미지" 
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#FAF8F5]/40 to-transparent mix-blend-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex items-start gap-5">
+                    <div class="bg-green-50 p-4 rounded-full text-green-600 shrink-0">
+                        <i data-lucide="book" class="w-7 h-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">도서 관리</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            도서 등록, 수정, 조회를<br />
+                            간편하게 관리할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex items-start gap-5">
+                    <div class="bg-blue-50 p-4 rounded-full text-blue-600 shrink-0">
+                        <i data-lucide="shopping-cart" class="w-7 h-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">장바구니</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            원하는 책을 담고 수량을 조절하여<br />
+                            편리하게 관리할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex items-start gap-5">
+                    <div class="bg-emerald-50 p-4 rounded-full text-emerald-600 shrink-0">
+                        <i data-lucide="clipboard-list" class="w-7 h-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">주문 처리</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            장바구니를 주문으로 변환하여<br />
+                            안전하게 주문을 처리합니다.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-10">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-slate-500 font-medium">
+            © 2024 북마켓 | JavaPrograming_BookMarket | Spring Boot MVC + JPA + Mustache
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+    
+    <!-- 기존 프로젝트의 jQuery 및 index.js 연결 영역 (필요시 주석 해제하여 사용) -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/app/index.js"></script>
+    -->
+</body>
+</html>
