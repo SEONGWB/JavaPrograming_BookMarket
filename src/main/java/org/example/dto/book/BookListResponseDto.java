@@ -16,6 +16,7 @@ public class BookListResponseDto {
     private String author;
     private String publisher;
     private int price;
+    private String imageUrl;
 
     private String category;
     private String releaseDate;
@@ -29,6 +30,7 @@ public class BookListResponseDto {
         this.author         = book.getAuthor();
         this.publisher      = book.getPublisher();
         this.price          = book.getPrice();
+        this.imageUrl       = book.getImageUrl();
         this.category       = book.getCategory();
         this.releaseDate    = book.getReleaseDate();
         this.modifiedDate   = book.getModifiedDate();

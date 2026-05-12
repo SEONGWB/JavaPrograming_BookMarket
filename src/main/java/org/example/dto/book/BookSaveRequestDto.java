@@ -18,6 +18,7 @@ public class BookSaveRequestDto {
     private String publisher;
     private int price;
     private String description;
+    private String imageUrl;
     private String category;
     private String releaseDate;
 
@@ -29,6 +30,7 @@ public class BookSaveRequestDto {
                 .publisher(publisher)
                 .price(price)
                 .description(description)
+                .imageUrl(imageUrl)
                 .category(category)
                 .releaseDate(releaseDate)
                 .build();

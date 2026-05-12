@@ -1,29 +1,78 @@
 {{>layout/header}}
-<h1>북마켓</h1>
-<div class="col-md-6">
-    <a href="/book/save" role="button" class="btn btn-primary">도서 등록</a>
-</div>
-<!-- 도서 목록 출력영역-->
-<div>
-<table class="table table-horizontal table-bordered">
-    <thead class="thead-strong">
-    <tr>
-        <th>ID</th>
-        <th>ISBN</th> <th>도서명</th>
-        <th>작성자</th> <th>출판사</th>
-        <th>판매가</th> <th>최종수정일</th>
-    </tr>
-    </thead>
-    <tbody id="tbody">
-    {{#book}}
-        <tr>
-            <td>{{id}}</td><td>{{isbn}}</td>
-            <td><a href="/book/update/{{id}}">{{title}}</a></td>
-            <td>{{author}}</td><td>{{publisher}}</td>
-            <td>{{price}}</td><td>{{modifiedDate}}</td>
-        </tr>
-    {{/book}}
-    </tbody>
-</table>
-</div>
+
+<main>
+    <section class="relative overflow-hidden bg-[#FAF8F5]">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 px-6 py-20 md:flex-row md:py-28">
+            <div class="z-10 flex w-full flex-col items-start md:w-1/2">
+                <p class="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-emerald-700">Book Market</p>
+                <h1 class="mb-6 text-5xl font-extrabold leading-tight tracking-tight text-[#0B1E40] md:text-6xl">
+                    읽고 싶은 책을<br/>한곳에서 관리하세요
+                </h1>
+                <p class="mb-10 text-lg leading-relaxed text-slate-600">
+                    도서 이미지 등록부터 장바구니, 주문 처리까지<br class="hidden md:block"/>
+                    Spring Boot 기반 북마켓 흐름을 간단하게 확인할 수 있습니다.
+                </p>
+
+                <div class="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
+                    <a href="/books" class="flex items-center justify-center gap-3 rounded-lg bg-[#0B1E40] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#152e5c] hover:shadow-xl">
+                        <i data-lucide="book-open" class="h-[22px] w-[22px]"></i>
+                        도서 둘러보기
+                    </a>
+                    <a href="/book/save" class="flex items-center justify-center gap-3 rounded-lg border border-[#0B1E40] bg-white px-8 py-4 text-lg font-semibold text-[#0B1E40] shadow-sm transition-all hover:bg-slate-50">
+                        <i data-lucide="square-pen" class="h-[22px] w-[22px]"></i>
+                        도서 등록
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-10 flex w-full items-center justify-center md:mt-0 md:w-1/2">
+                <div class="relative aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 hover:rotate-0 md:rotate-1">
+                    <img
+                            src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                            alt="서점 책장"
+                            class="h-full w-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#FAF8F5]/40 to-transparent mix-blend-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20">
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <a href="/books" class="flex items-start gap-5 rounded-2xl border border-gray-100 bg-white p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)]">
+                    <div class="shrink-0 rounded-full bg-green-50 p-4 text-green-600">
+                        <i data-lucide="book" class="h-7 w-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 text-xl font-bold text-slate-900">도서 카탈로그</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">등록된 도서를 이미지와 함께 확인하고 장바구니에 담습니다.</p>
+                    </div>
+                </a>
+
+                <a href="/book/save" class="flex items-start gap-5 rounded-2xl border border-gray-100 bg-white p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)]">
+                    <div class="shrink-0 rounded-full bg-blue-50 p-4 text-blue-600">
+                        <i data-lucide="image-plus" class="h-7 w-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 text-xl font-bold text-slate-900">이미지 등록</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">도서 표지 URL 또는 이미지 파일을 선택해 함께 저장합니다.</p>
+                    </div>
+                </a>
+
+                <a href="/login" class="flex items-start gap-5 rounded-2xl border border-gray-100 bg-white p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)]">
+                    <div class="shrink-0 rounded-full bg-emerald-50 p-4 text-emerald-600">
+                        <i data-lucide="user-check" class="h-7 w-7 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 text-xl font-bold text-slate-900">소셜 로그인</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">일반 로그인과 네이버, 구글 OAuth 로그인을 사용할 수 있습니다.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
 {{>layout/footer}}

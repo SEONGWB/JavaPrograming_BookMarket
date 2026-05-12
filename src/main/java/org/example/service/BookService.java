@@ -35,6 +35,7 @@ public class BookService {
                 requestDto.getPublisher(),
                 requestDto.getPrice(),
                 requestDto.getDescription(),
+                requestDto.getImageUrl(),
                 requestDto.getCategory(),
                 requestDto.getReleaseDate()
         );

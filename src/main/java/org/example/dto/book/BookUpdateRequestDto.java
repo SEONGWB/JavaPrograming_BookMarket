@@ -17,6 +17,7 @@ public class BookUpdateRequestDto {
     private String publisher;
     private int price;
     private String description;
+    private String imageUrl;
     private String category;
     private String releaseDate;
 }
