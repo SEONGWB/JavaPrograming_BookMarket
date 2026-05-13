@@ -29,4 +29,15 @@ public class User extends BaseTimeEntity {
   
     @Column(nullable = false)                               
     private String provider;
+
+    public void updateProfile(String name, String password) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("이름을 입력해 주세요.");
+        }
+
+        this.name = name;
+        if (password != null && !password.isBlank()) {
+            this.password = password;
+        }
+    }
 }

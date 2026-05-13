@@ -20,6 +20,8 @@ public class BookListResponseDto {
 
     private String category;
     private String releaseDate;
+    private Long ownerId;
+    private String ownerName;
 
     private LocalDateTime modifiedDate;
 
@@ -33,6 +35,10 @@ public class BookListResponseDto {
         this.imageUrl       = book.getImageUrl();
         this.category       = book.getCategory();
         this.releaseDate    = book.getReleaseDate();
+        if (book.getOwner() != null) {
+            this.ownerId     = book.getOwner().getId();
+            this.ownerName   = book.getOwner().getName();
+        }
         this.modifiedDate   = book.getModifiedDate();
     }
 }

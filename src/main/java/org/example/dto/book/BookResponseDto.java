@@ -19,6 +19,8 @@ public class BookResponseDto {
     private String imageUrl;
     private String category;
     private String releaseDate;
+    private Long ownerId;
+    private String ownerName;
 
     public BookResponseDto(Book book) {
         this.id             = book.getId();
@@ -31,5 +33,9 @@ public class BookResponseDto {
         this.imageUrl       = book.getImageUrl();
         this.category       = book.getCategory();
         this.releaseDate    = book.getReleaseDate();
+        if (book.getOwner() != null) {
+            this.ownerId     = book.getOwner().getId();
+            this.ownerName   = book.getOwner().getName();
+        }
     }
 }

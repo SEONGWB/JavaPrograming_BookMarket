@@ -37,4 +37,10 @@ public class BookController {
     public List<BookListResponseDto> findAll() {
         return bookService.findAllDesc();
     }
+
+    @DeleteMapping("/api/v1/book/{id}")
+    public Long delete(@PathVariable Long id, @RequestParam Long userId) {
+        bookService.delete(id, userId);
+        return id;
+    }
 }

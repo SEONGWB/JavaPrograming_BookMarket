@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.entity.Book;
+import org.example.entity.User;
 
 @Getter
 @NoArgsConstructor
@@ -21,8 +22,9 @@ public class BookSaveRequestDto {
     private String imageUrl;
     private String category;
     private String releaseDate;
+    private Long userId;
 
-    public Book toEntity() {
+    public Book toEntity(User owner) {
         return Book.builder()
                 .isbn(isbn)
                 .title(title)
@@ -33,6 +35,7 @@ public class BookSaveRequestDto {
                 .imageUrl(imageUrl)
                 .category(category)
                 .releaseDate(releaseDate)
+                .owner(owner)
                 .build();
     }
 }

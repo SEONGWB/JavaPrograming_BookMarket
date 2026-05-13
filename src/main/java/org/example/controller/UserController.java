@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.user.LoginRequestDto;
 import org.example.dto.user.SignupRequestDto;
 import org.example.dto.user.UserResponseDto;
+import org.example.dto.user.UserUpdateRequestDto;
 import org.example.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,5 +29,15 @@ public class UserController {
     @GetMapping("/api/v1/user/{id}")
     public UserResponseDto findById(@PathVariable Long id) {
         return userService.findById(id);
+    }
+
+    @GetMapping("/api/v1/users")
+    public List<UserResponseDto> findAll() {
+        return userService.findAll();
+    }
+
+    @PutMapping("/api/v1/user/{id}")
+    public UserResponseDto update(@PathVariable Long id, @RequestBody UserUpdateRequestDto requestDto) {
+        return userService.update(id, requestDto);
     }
 }

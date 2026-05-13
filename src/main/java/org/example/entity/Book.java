@@ -37,8 +37,12 @@ public class Book extends BaseTimeEntity {
     private String category;
     private String releaseDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     @Builder
-    public Book(String isbn, String title, String author, String publisher, int price, String description, String imageUrl, String category, String releaseDate) {
+    public Book(String isbn, String title, String author, String publisher, int price, String description, String imageUrl, String category, String releaseDate, User owner) {
         this.isbn        = isbn;
         this.title       = title;
         this.author      = author;
@@ -48,6 +52,7 @@ public class Book extends BaseTimeEntity {
         this.imageUrl    = imageUrl;
         this.category    = category;
         this.releaseDate = releaseDate;
+        this.owner       = owner;
     }
 
     public void update(String isbn, String title, String author, String publisher, int price, String description, String imageUrl, String category, String releaseDate) {

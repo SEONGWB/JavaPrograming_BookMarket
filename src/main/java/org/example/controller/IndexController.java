@@ -71,6 +71,26 @@ public class IndexController {
         return "signup";
     }
 
+    @GetMapping("/user/profile")
+    public String userProfile() {
+        return "user-profile";
+    }
+
+    @GetMapping("/user/profile/edit")
+    public String userProfileEdit() {
+        return "user-profile-edit";
+    }
+
+    @GetMapping("/orders")
+    public String orders() {
+        return "orders";
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
     @GetMapping("/oauth/success")
     public String oauthSuccess() {
         return "oauth-success";

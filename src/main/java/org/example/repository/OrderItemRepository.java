@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     // 특정 주문서에 포함된 모든 상품 항목들을 찾을 때 사용함.
     List<OrderItem> findByOrder(Order order);
+    boolean existsByBookId(Long bookId);
 }

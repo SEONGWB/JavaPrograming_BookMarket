@@ -25,10 +25,12 @@
                 <i data-lucide="shopping-cart" class="h-[18px] w-[18px]"></i>
                 장바구니
             </a>
-            <a href="/login" class="ml-4 flex items-center gap-2 transition-colors hover:text-slate-900">
-                <i data-lucide="user" class="h-[18px] w-[18px]"></i>
-                로그인
-            </a>
+            <div id="auth-menu" class="relative ml-4">
+                <a href="/login" id="auth-link" class="flex items-center gap-2 transition-colors hover:text-slate-900">
+                    <i data-lucide="user" class="h-[18px] w-[18px]"></i>
+                    로그인
+                </a>
+            </div>
         </nav>
 
         <button type="button" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 md:hidden" aria-label="메뉴">

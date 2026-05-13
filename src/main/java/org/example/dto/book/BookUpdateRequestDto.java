@@ -20,4 +20,5 @@ public class BookUpdateRequestDto {
     private String imageUrl;
     private String category;
     private String releaseDate;
+    private Long userId;
 }
