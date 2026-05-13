@@ -1,0 +1,38 @@
+{{>layout/header}}
+
+<main class="bg-slate-50 py-16">
+    <section class="mx-auto max-w-3xl px-6">
+        <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)]">
+            <div class="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex items-center gap-4">
+                    <div id="profileAvatar" class="flex h-16 w-16 items-center justify-center rounded-full bg-[#0B1E40] text-xl font-extrabold text-white">U</div>
+                    <div>
+                        <p class="text-sm font-bold uppercase tracking-[0.16em] text-emerald-700">My Page</p>
+                        <h1 id="profileNameTitle" class="mt-1 text-3xl font-extrabold text-[#0B1E40]">회원 정보</h1>
+                    </div>
+                </div>
+                <a href="/user/profile/edit" class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0B1E40] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#152e5c]">
+                    <i data-lucide="pencil" class="h-4 w-4"></i>
+                    수정
+                </a>
+            </div>
+
+            <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="rounded-lg border border-gray-100 bg-slate-50 p-5">
+                    <dt class="text-sm font-semibold text-slate-500">아이디</dt>
+                    <dd id="profileLoginId" class="mt-2 text-lg font-bold text-slate-900">-</dd>
+                </div>
+                <div class="rounded-lg border border-gray-100 bg-slate-50 p-5">
+                    <dt class="text-sm font-semibold text-slate-500">이름</dt>
+                    <dd id="profileName" class="mt-2 text-lg font-bold text-slate-900">-</dd>
+                </div>
+                <div class="rounded-lg border border-gray-100 bg-slate-50 p-5 sm:col-span-2">
+                    <dt class="text-sm font-semibold text-slate-500">가입 방식</dt>
+                    <dd id="profileProvider" class="mt-2 text-lg font-bold text-slate-900">-</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+</main>
+
+{{>layout/footer}}
